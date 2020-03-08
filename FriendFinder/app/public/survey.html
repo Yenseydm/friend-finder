@@ -28,6 +28,9 @@ body {
 }
 form{ text-align: left;}
 
+#bestFriendPhoto{ height: 300px; width: 420px;}
+
+
 </style>
 
 </head>
@@ -47,12 +50,12 @@ form{ text-align: left;}
     <h2>About You</h2>
     <form>
         <div>
-            <label for="link-input"> Link to Photo of You! (Required)</label>
-            <input type="text" class="form-control" id="link-input">
+            <label for="name-input"> Name (Required)</label>
+            <input type="text" class="form-control" id="name-input">
         </div>
         <div>
-            <label for="name-input"> Name (Required)</label>
-            <input type="url" class="form-control" id="name-input">
+            <label for="link-input"> Photo of You! (Required)</label>
+            <input type="url" class="form-control" id="link-input">
         </div>
         <hr>
 <!-- question 1 -->
@@ -181,29 +184,51 @@ form{ text-align: left;}
     
 
 <br>
-<!-- submit button-->
-    <button id="submit" class="btn btn-ligh"><span class="fa fa-heart"></span> Submit!</button>
-</div>
 </form>
+<!-- submit button-->
+    <button id="submitBtn" type="submit" class="btn btn-light"><span class="fa fa-heart"></span> Submit!</button>
+</div>
 
-    <!-- bottom links-->
+<!-- Modal -->
+    <div id="bestFriendModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">Your Match!</h1>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <h2 id="bestFriend"></h2>
+            <img id="bestFriendPhoto" src="#">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- end of modal -->
+
+<!-- bottom links-->
     <div class="row">
       <a href="/api/friends">API Friends List | </a> 
       <a href="https://github.com/Yenseydm/friend-finder">GitHub Repo</a> 
     </div>
 
   </div>
+
 </body>
 </html>
 
 <script>
-$("#submit").on("click", function(event) {
+$("#submitBtn").on("click", function(event) {
 		event.preventDefault();
 
 		// Form validation
 		var valid = true;
 
-		if($("#name-input").val() === "" || $("#photo").val() === "") {
+		if($("#name-input").val() === "" || $("#link-input").val() === "") {
 			valid = false;
 		} else if($("#q1-input").val() === "empty" || $("#q2-input").val() === "empty" || $("#q3-input").val() === "empty" || $("#q4-input").val() === "empty" || $("#q5-input").val() === "empty" || $("#q6-input").val() === "empty" || $("#q7-input").val() === "empty" || $("#q8-input").val() === "empty" || $("#q9-input").val() === "empty" || $("#q10-input").val() === "empty") {
 			valid = false;
@@ -225,9 +250,7 @@ $("#submit").on("click", function(event) {
         $("#q9-input").val(),
         $("#q10-input").val(),
 				]
-			}else{
-        alert("You left something blank. Try again!")
-      };
+			}; 
 
 			var currentURL = window.location.origin;
 
@@ -236,7 +259,9 @@ $("#submit").on("click", function(event) {
 				$("#bestFriendPhoto").attr("src", data.photo);
 				$("#bestFriendModal").modal("toggle");
 			});
-		} 
+		} else{
+      alert("Survey not completed.")
+    }
 	});
 
 </script>
