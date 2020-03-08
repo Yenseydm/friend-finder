@@ -1,0 +1,16 @@
+
+body {
+    background-image: url(FriendFinder/app/public/images/bkg1.jpg);
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-align: center;
+}
+#title1 {
+    font-family: 'Sacramento', cursive;
+    font-size: 100px;
+}
+.jumbotron{
+    background-color: rgb(255, 221, 205);
+}
+.btn {
+    font-size: 30px;
+}

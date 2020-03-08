@@ -16,4 +16,4 @@ var newFriend =
     ]
 };
 
-module.exports = newfriend;
+// module.exports = newfriend;
