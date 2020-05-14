@@ -8,9 +8,11 @@ feel free to try it in this [Demo](https://young-plains-88015.herokuapp.com).
 
 ## Built With
 
-* 
-*
-*
+* HTML
+* CSS
+* API
+* Node
+* express
 
 ## Authors
 
